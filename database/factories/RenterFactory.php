@@ -17,7 +17,10 @@ class RenterFactory extends Factory
     public function definition()
     {
         return [
-            //
+            "name" => fake()->name(),
+            "email" => fake()->email(),
+            "password" => fake()->password(),
+            "divelevel" => fake()->numberBetween(0,4)
         ];
     }
 }

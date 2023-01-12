@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Renter;
 
 class RenterController extends Controller
 {
@@ -14,7 +15,8 @@ class RenterController extends Controller
      */
     public function index()
     {
-        //
+        $renters = Renter::all();
+        return response()->json($renters);
     }
 
     /**

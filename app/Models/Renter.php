@@ -11,6 +11,7 @@ class Renter extends Model
 
     protected $hidden = [
         'updated_at',
-        'created_at'
+        'created_at',
+        'password'
     ];
 }
