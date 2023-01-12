@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('renters', function (Blueprint $table) {
             $table->id();
+            $table->string('name', 155);
+            $table->string('email', 255);
+            $table->string('password', 155);
+            $table->integer('divelevel');
             $table->timestamps();
         });
     }
