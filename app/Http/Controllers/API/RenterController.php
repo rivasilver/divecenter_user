@@ -25,9 +25,12 @@ class RenterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRenterRequest $request)
     {
-        //
+        $renter = new Renter();
+        $renter->fill($request->all());
+        $renter->save();
+        return response()->json($renter, 201);
     }
 
     /**
@@ -38,7 +41,11 @@ class RenterController extends Controller
      */
     public function show($id)
     {
-        //
+        $renter = Renter::find($id);
+        if (is_null($renter)) {
+            return response()->json(["message"=>"ID not found"], 404);
+        }
+        return response()->json($renter);
     }
 
     /**
@@ -48,9 +55,15 @@ class RenterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRenterRequest $request, $id)
     {
-        //
+        $renter = Renter::find($id);
+        if (is_null($renter)) {
+            return response()->json(["message"=>"ID not found"], 404);
+        }
+        $renter->fill($request->all());
+        $renter->save();
+        return response()->json($renter);
     }
 
     /**
@@ -61,6 +74,11 @@ class RenterController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $renter = Renter::find($id);
+        if (is_null($renter)) {
+            return response()->json(["message"=>"ID not found"], 404);
+        }
+        Renter::destroy($id);
+        return response()->noContent();
     }
 }

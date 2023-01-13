@@ -14,4 +14,11 @@ class Renter extends Model
         'created_at',
         'password'
     ];
+
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'divelevel'
+    ];
 }

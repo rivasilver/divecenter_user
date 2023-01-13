@@ -13,7 +13,7 @@ class StoreRenterRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class StoreRenterRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "name" => "required|string|max:155",
+            "email" => "required|email|max:255",
+            "password" => "required|string|max:155",
+            "divelevel" => "required|integer|min:0|max:4"
         ];
     }
 }

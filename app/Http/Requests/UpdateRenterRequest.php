@@ -13,7 +13,7 @@ class UpdateRenterRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class UpdateRenterRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "name" => "string|max:155",
+            "email" => "email|max:255",
+            "password" => "string|max:155",
+            "divelevel" => "integer|min:0|max:4"
         ];
     }
 }
